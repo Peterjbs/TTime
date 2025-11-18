@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0e14" />
+  <title>Two Player Timer — TTime</title>
+
+  <!-- Base layout + shared styles -->
+  <link rel="stylesheet" href="TTimeBase.css" />
+
+  <!-- Default vibe stylesheet (Neo Noir). JS can swap this or you can preload all vibes. -->
+  <link id="vibeStylesheet" rel="stylesheet" href="TTimeStyleNeoNoir.css" />
+</head>
+<body>
+  <div class="dock">
+    <button class="btn-player-start">START</button>
+    <button class="btn-player-stop" disabled>STOP</button>
+    <button class="btn-fullscreen" title="Fullscreen app">⛶</button>
+    <div class="spacer"></div>
+    <label>
+      Vibe
+      <select class="vibe-select"></select>
+    </label>
+    <button class="btn-mute" title="Mute/Unmute all">🔇</button>
+    <span id="status" class="hint">Load ≥4 vids, then Start and pick vibe/video.</span>
+  </div>
+
+  <div class="stage">
+    <!-- Quadrant 1 -->
+    <div class="quadrant" id="q1">
+      <div class="video-container">
+        <div class="selectBadge"></div>
+        <video playsinline webkit-playsinline muted preload="metadata" class="quad-video"></video>
+
+        <div class="vibe-overlay"></div>
+
+        <!-- Event overlays (generic; vibes adjust via CSS & variables) -->
+        <div class="event-overlay event-overlay-light" data-effect="light"></div>
+        <div class="event-overlay event-overlay-smoke" data-effect="smoke"></div>
+        <div class="event-overlay event-overlay-inhale" data-effect="inhale"></div>
+        <div class="event-overlay event-overlay-hold" data-effect="hold"></div>
+        <div class="event-overlay event-overlay-exhale" data-effect="exhale"></div>
+        <div class="event-overlay event-overlay-sniff" data-effect="sniff"></div>
+        <div class="event-overlay event-overlay-mask" data-effect="mask"></div>
+        <div class="event-overlay event-overlay-action" data-effect="action"></div>
+
+        <div class="overlay video-countdown-overlay">
+          <div class="inner">
+            <div class="display-xxl countdown-text">--</div>
+            <div class="timer-text countdown-timer">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-container">
+        <div class="overlay info-text-overlay info-text-idle">
+          <div class="countdown">0</div>
+          <div class="label">
+            <span class="until-text">UNTIL NEXT EVENT</span>
+            <span class="label-main">READY</span>
+          </div>
+        </div>
+
+        <!-- Validation -->
+        <div class="special-overlay validation-overlay">
+          <div class="special-overlay-timer">10</div>
+          <div class="special-overlay-title validation-title">Did you complete it?</div>
+          <div class="validation-buttons">
+            <button class="validation-button fail">✗</button>
+            <button class="validation-button confirm">✓</button>
+          </div>
+        </div>
+
+        <!-- Grid choice (video) -->
+        <div class="special-overlay grid-choice-overlay">
+          <div class="special-overlay-timer">20</div>
+          <div class="special-overlay-title grid-choice-title">CHOOSE NEW VIDEO</div>
+          <div class="grid-choice-grid">
+            <div class="grid-choice-item" data-idx="0">
+              <video playsinline webkit-playsinline muted preload="metadata"></video>
+              <div class="item-label"></div>
+            </div>
+            <div class="grid-choice-item" data-idx="1">
+              <video playsinline webkit-playsinline muted preload="metadata"></video>
+              <div class="item-label"></div>
+            </div>
+            <div class="grid-choice-item" data-idx="2">
+              <video playsinline webkit-playsinline muted preload="metadata"></video>
+              <div class="item-label"></div>
+            </div>
+            <div class="grid-choice-item" data-idx="3">
+              <video playsinline webkit-playsinline muted preload="metadata"></video>
+              <div class="item-label"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action choice -->
+        <div class="special-overlay action-choice-overlay">
+          <div class="special-overlay-timer">20</div>
+          <div class="special-overlay-title action-choice-title">CHOOSE NEXT EVENT</div>
+          <div class="action-choice-list"></div>
+        </div>
+
+        <!-- Breath count -->
+        <div class="special-overlay breath-count-overlay">
+          <div class="special-overlay-timer">10</div>
+          <div class="special-overlay-title breath-count-title">HOW MANY BREATHS?</div>
+          <div class="breath-count-list">
+            <div class="breath-count-item" data-num="1">1</div>
+            <div class="breath-count-item" data-num="2">2</div>
+            <div class="breath-count-item" data-num="3">3</div>
+            <div class="breath-count-item" data-num="4">4</div>
+            <div class="breath-count-item" data-num="5">5</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-bar">
+        <button class="btn-phase-cancel btn-phase-fail" title="Fail/Skip Event">✗</button>
+        <button class="btn-phase-cancel btn-phase-confirm" title="Complete Event">✓</button>
+        <span class="spacer"></span>
+        <button class="btnReset" title="Reset phase visuals">🧹</button>
+        <button class="btnRestart" title="Restart (20s)">🔄</button>
+        <div class="tally">Score: 0</div>
+        <button class="shuffleVideo" title="Next video">⇄</button>
+        <button class="btnFS" title="Fullscreen this quad">⛶</button>
+        <button class="btnSound" title="Play this quad's audio">🔈</button>
+      </div>
+
+      <div class="overlay chooseTint">
+        <div class="choose-layout">
+          <div class="choose-video-area">
+            <div class="chooseTitle">PICK A VIDEO</div>
+            <div class="choose-grid start-grid">
+              <div class="choose-grid-item" data-idx="0">
+                <video playsinline muted preload="metadata"></video>
+                <div class="item-label"></div>
+              </div>
+              <div class="choose-grid-item" data-idx="1">
+                <video playsinline muted preload="metadata"></video>
+                <div class="item-label"></div>
+              </div>
+              <div class="choose-grid-item" data-idx="2">
+                <video playsinline muted preload="metadata"></video>
+                <div class="item-label"></div>
+              </div>
+              <div class="choose-grid-item" data-idx="3">
+                <video playsinline muted preload="metadata"></video>
+                <div class="item-label"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="choose-panel-area">
+            <div class="theme-name start-theme-title"></div>
+            <div class="choose-actions start-controls">
+              <button class="btn-change-theme">Change Theme</button>
+              <button class="btn-player-start primary">Start Player</button>
+            </div>
+            <div class="vibe-preview">
+              <div class="preview-title">VIBE PREVIEW</div>
+              <div class="preview-panel preview-panel-info">Info panel</div>
+              <div class="preview-panel preview-panel-video">Video label</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quadrant 2: same structure -->
+    <div class="quadrant" id="q2">
+      <!-- identical inner structure to q1 -->
+      <!-- For brevity, mirror q1’s markup here in your actual file -->
+    </div>
+  </div>
+
+  <script src="TTime.js"></script>
+</body>
+</html>
