@@ -1,0 +1,708 @@
+/* game.css - Quadrant Timers Styles */
+
+:root {
+    --dock-height: 60px;
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --bg-dark: #0b0e14;
+    --bg-panel: #1a1f2e;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --accent-cyan: #00ffff;
+    --accent-pink: #ff00ff;
+    --accent-green: #00ff88;
+    --accent-red: #ff4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Space Grotesk', 'Arial', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ========================================
+   DOCK (Top Bar)
+   ======================================== */
+
+.dock {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--dock-height);
+    background: var(--bg-panel);
+    border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dock label {
+    background: var(--accent-cyan);
+    color: var(--bg-dark);
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition-speed);
+}
+
+.dock label:hover {
+    background: #00dddd;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.dock input[type="file"] {
+    display: none;
+}
+
+.dock button {
+    background: var(--accent-green);
+    color: var(--bg-dark);
+    border: none;
+    padding: 8px 16px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all var(--transition-speed);
+}
+
+.dock button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 255, 136, 0.4);
+}
+
+.dock button:active {
+    transform: translateY(0);
+}
+
+.dock button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.dock .spacer {
+    flex: 1;
+}
+
+.dock #status {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* ========================================
+   STAGE (Main Content Area)
+   ======================================== */
+
+.stage {
+    position: fixed;
+    top: var(--dock-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: rgba(0, 255, 255, 0.1);
+}
+
+/* ========================================
+   QUADRANT
+   ======================================== */
+
+.quadrant {
+    position: relative;
+    background: var(--bg-dark);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ========================================
+   VIDEO CONTAINER
+   ======================================== */
+
+.video-container {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background: #000;
+}
+
+.quad-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vibe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0.3;
+}
+
+/* Event overlays */
+.event-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.event-overlay.active {
+    opacity: 1;
+}
+
+.event-overlay-light {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+}
+
+.event-overlay-smoke {
+    background: radial-gradient(ellipse at center, rgba(100, 100, 100, 0.7) 0%, transparent 60%);
+    animation: smoke 3s ease-in-out infinite;
+}
+
+@keyframes smoke {
+    0%, 100% { transform: scale(1) translateY(0); }
+    50% { transform: scale(1.2) translateY(-20px); }
+}
+
+.event-overlay-inhale {
+    background: radial-gradient(circle at center, rgba(0, 255, 255, 0.4) 0%, transparent 50%);
+    animation: pulse 2s ease-in-out;
+}
+
+.event-overlay-hold {
+    background: rgba(255, 255, 0, 0.2);
+}
+
+.event-overlay-exhale {
+    background: radial-gradient(circle at center, transparent 30%, rgba(0, 255, 136, 0.4) 100%);
+}
+
+.event-overlay-sniff {
+    background: radial-gradient(circle at 50% 30%, rgba(255, 0, 255, 0.5) 0%, transparent 40%);
+}
+
+.event-overlay-mask {
+    background: linear-gradient(180deg, rgba(136, 0, 255, 0.4) 0%, transparent 50%);
+}
+
+.event-overlay-action {
+    background: radial-gradient(circle at center, rgba(255, 68, 68, 0.5) 0%, transparent 60%);
+    animation: actionPulse 0.5s ease-in-out 3;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes actionPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* Video countdown overlay */
+.video-countdown-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+}
+
+.countdown-text {
+    font-size: 8rem;
+    font-weight: bold;
+    color: var(--accent-cyan);
+    text-shadow: 0 0 20px var(--accent-cyan), 0 0 40px var(--accent-cyan);
+    font-family: 'Press Start 2P', monospace;
+}
+
+.countdown-timer {
+    font-size: 3rem;
+    color: var(--accent-pink);
+    text-shadow: 0 0 10px var(--accent-pink);
+    font-family: 'Orbitron', monospace;
+}
+
+/* ========================================
+   PANEL CONTAINER
+   ======================================== */
+
+.panel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.panel-container > * {
+    pointer-events: auto;
+}
+
+.info-text-overlay {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--accent-cyan);
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 0 0 10px var(--accent-cyan);
+    backdrop-filter: blur(5px);
+}
+
+.nextEventTimer {
+    position: absolute;
+    top: 100px;
+    right: 20px;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid var(--accent-pink);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    color: var(--accent-pink);
+    text-shadow: 0 0 5px var(--accent-pink);
+}
+
+.nextEventName {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.nextEventTime {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* ========================================
+   SPECIAL OVERLAYS
+   ======================================== */
+
+.special-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(10, 10, 20, 0.95);
+    border: 3px solid var(--accent-cyan);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    text-align: center;
+    min-width: 400px;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+    display: none;
+    backdrop-filter: blur(10px);
+}
+
+.special-overlay.active {
+    display: block;
+    animation: overlayAppear 0.3s ease-out;
+}
+
+@keyframes overlayAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.special-overlay-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--accent-cyan);
+    margin-bottom: 20px;
+    text-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.special-overlay-timer {
+    font-size: 3rem;
+    color: var(--accent-pink);
+    font-weight: bold;
+    margin: 20px 0;
+    text-shadow: 0 0 15px var(--accent-pink);
+    font-family: 'Orbitron', monospace;
+}
+
+.special-overlay-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.validation-button {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    text-transform: uppercase;
+}
+
+.validation-button.confirm {
+    background: var(--accent-green);
+    color: var(--bg-dark);
+}
+
+.validation-button.confirm:hover {
+    background: #00dd77;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+}
+
+.validation-button.fail {
+    background: var(--accent-red);
+    color: white;
+}
+
+.validation-button.fail:hover {
+    background: #dd3333;
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.6);
+}
+
+/* Choices grid */
+.choices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.choices button {
+    padding: 15px;
+    background: var(--bg-panel);
+    border: 2px solid var(--accent-cyan);
+    border-radius: var(--border-radius);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all var(--transition-speed);
+}
+
+.choices button:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px var(--accent-cyan);
+}
+
+/* ========================================
+   BOTTOM BAR (Per-Quadrant Controls)
+   ======================================== */
+
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background: rgba(26, 31, 46, 0.95);
+    border-top: 2px solid rgba(0, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 15px;
+    backdrop-filter: blur(5px);
+}
+
+.bottom-bar button {
+    background: var(--bg-panel);
+    color: var(--text-primary);
+    border: 1px solid var(--accent-cyan);
+    padding: 6px 12px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all var(--transition-speed);
+}
+
+.bottom-bar button:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-dark);
+    box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.bottom-bar .btn-phase-confirm {
+    background: var(--accent-green);
+    color: var(--bg-dark);
+    border-color: var(--accent-green);
+}
+
+.bottom-bar .btn-phase-fail {
+    background: var(--accent-red);
+    color: white;
+    border-color: var(--accent-red);
+}
+
+.bottom-bar .tally {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--accent-green);
+    text-shadow: 0 0 5px var(--accent-green);
+}
+
+/* ========================================
+   CHOOSER OVERLAY (Start Screen)
+   ======================================== */
+
+.overlay.chooseTint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 20, 0.98);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.overlay.chooseTint:not(.active) {
+    display: none;
+}
+
+.choose-layout {
+    display: flex;
+    gap: 40px;
+    max-width: 1200px;
+    padding: 40px;
+}
+
+.choose-video-area {
+    flex: 2;
+}
+
+.chooseTitle {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--accent-cyan);
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px var(--accent-cyan);
+    text-align: center;
+}
+
+.choose-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.choose-grid-item {
+    position: relative;
+    aspect-ratio: 16/9;
+    background: var(--bg-panel);
+    border: 3px solid var(--accent-cyan);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.choose-grid-item:hover {
+    border-color: var(--accent-pink);
+    box-shadow: 0 0 20px var(--accent-pink);
+    transform: scale(1.05);
+}
+
+.choose-grid-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.choose-grid-item .item-label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px;
+    font-size: 0.8rem;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.choose-panel-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.theme-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--accent-pink);
+    text-shadow: 0 0 20px var(--accent-pink);
+    text-align: center;
+}
+
+.choose-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.choose-actions button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    background: var(--accent-green);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.choose-actions button:hover {
+    background: #00dd77;
+    box-shadow: 0 0 20px var(--accent-green);
+    transform: translateY(-2px);
+}
+
+.choose-actions .btn-change-theme {
+    background: var(--accent-cyan);
+}
+
+.choose-actions .btn-change-theme:hover {
+    background: #00dddd;
+    box-shadow: 0 0 20px var(--accent-cyan);
+}
+
+.vibe-preview {
+    background: var(--bg-panel);
+    border: 2px solid var(--accent-cyan);
+    border-radius: var(--border-radius);
+    padding: 20px;
+}
+
+.preview-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accent-cyan);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.preview-panel {
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: var(--border-radius);
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.display-xxl {
+    font-size: 8rem;
+}
+
+.display-lg {
+    font-size: 1.5rem;
+}
+
+.hint {
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 1200px) {
+    .stage {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    
+    .choose-layout {
+        flex-direction: column;
+    }
+    
+    .special-overlay {
+        min-width: 90vw;
+        max-width: 90vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .dock {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: var(--dock-height);
+        padding: 10px;
+    }
+    
+    .dock button,
+    .dock label {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+    
+    .countdown-text {
+        font-size: 4rem;
+    }
+    
+    .countdown-timer {
+        font-size: 2rem;
+    }
+    
+    .choose-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .special-overlay-title {
+        font-size: 1.3rem;
+    }
+    
+    .special-overlay-timer {
+        font-size: 2rem;
+    }
+}
