@@ -1,0 +1,221 @@
+/* TTimeStyleNeoNoir.css - Neo-Noir theme for Two Player Timer */
+
+:root {
+    --neon-cyan: #00ffff;
+    --neon-pink: #ff00ff;
+    --neon-purple: #8800ff;
+    --dark-bg: #0a0a0a;
+    --grid-color: #1a1a2e;
+}
+
+body {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated background grid */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(var(--neon-cyan) 1px, transparent 1px),
+        linear-gradient(90deg, var(--neon-cyan) 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.05;
+    z-index: -1;
+    animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(50px, 50px);
+    }
+}
+
+#main-container {
+    background: rgba(10, 10, 20, 0.9);
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.3),
+        0 0 40px rgba(0, 255, 255, 0.2),
+        inset 0 0 20px rgba(0, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+h1 {
+    color: var(--neon-cyan);
+    text-shadow: 
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan),
+        0 0 30px var(--neon-cyan);
+    letter-spacing: 3px;
+    animation: titlePulse 2s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px var(--neon-cyan),
+            0 0 20px var(--neon-cyan),
+            0 0 30px var(--neon-cyan);
+    }
+    50% {
+        text-shadow: 
+            0 0 15px var(--neon-cyan),
+            0 0 30px var(--neon-cyan),
+            0 0 45px var(--neon-cyan);
+    }
+}
+
+#timer p {
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--neon-pink);
+    color: var(--neon-pink);
+    text-shadow: 
+        0 0 5px var(--neon-pink),
+        0 0 10px var(--neon-pink);
+    box-shadow: 
+        0 0 10px rgba(255, 0, 255, 0.3),
+        inset 0 0 10px rgba(255, 0, 255, 0.1);
+}
+
+#timer p:nth-child(1) {
+    border-color: var(--neon-cyan);
+    color: var(--neon-cyan);
+    text-shadow: 
+        0 0 5px var(--neon-cyan),
+        0 0 10px var(--neon-cyan);
+    box-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.3),
+        inset 0 0 10px rgba(0, 255, 255, 0.1);
+}
+
+#timer p:hover {
+    border-color: var(--neon-purple);
+    box-shadow: 
+        0 0 20px rgba(136, 0, 255, 0.5),
+        inset 0 0 10px rgba(136, 0, 255, 0.2);
+    transform: scale(1.05);
+}
+
+button {
+    background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--neon-purple) 100%);
+    color: #000;
+    text-shadow: none;
+    font-weight: bold;
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 
+        0 0 10px rgba(0, 255, 255, 0.5),
+        0 4px 6px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 0 20px rgba(0, 255, 255, 0.7),
+        0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+button#stop {
+    background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+    border-color: #ff4444;
+    box-shadow: 
+        0 0 10px rgba(255, 68, 68, 0.5),
+        0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button#stop:hover {
+    box-shadow: 
+        0 0 20px rgba(255, 68, 68, 0.7),
+        0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+button#reset {
+    background: linear-gradient(135deg, var(--neon-purple) 0%, var(--neon-pink) 100%);
+    border-color: var(--neon-purple);
+    color: #fff;
+    box-shadow: 
+        0 0 10px rgba(136, 0, 255, 0.5),
+        0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button#reset:hover {
+    box-shadow: 
+        0 0 20px rgba(136, 0, 255, 0.7),
+        0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* Scanline effect */
+#main-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        transparent 50%,
+        rgba(0, 255, 255, 0.03) 50%
+    );
+    background-size: 100% 4px;
+    pointer-events: none;
+    animation: scanlines 10s linear infinite;
+}
+
+@keyframes scanlines {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(4px);
+    }
+}
+
+/* Glow effect on active states */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 
+            0 0 10px rgba(0, 255, 255, 0.5),
+            0 0 20px rgba(0, 255, 255, 0.3);
+    }
+    50% {
+        box-shadow: 
+            0 0 20px rgba(0, 255, 255, 0.8),
+            0 0 40px rgba(0, 255, 255, 0.5);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    h1 {
+        letter-spacing: 1px;
+    }
+}
