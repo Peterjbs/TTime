@@ -1,0 +1,120 @@
+/* TTimeBase.css - Base styles for Two Player Timer */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #1a1a1a;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#main-container {
+    background: #2a2a2a;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    min-width: 300px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+#timer {
+    margin: 30px 0;
+    font-size: 1.5rem;
+    font-family: 'Courier New', monospace;
+}
+
+#timer p {
+    margin: 15px 0;
+    padding: 15px;
+    background: #1a1a1a;
+    border-radius: 5px;
+    border: 2px solid #444;
+    transition: all 0.3s ease;
+}
+
+#timer p:hover {
+    border-color: #00ff88;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+button {
+    background: #00ff88;
+    color: #1a1a1a;
+    border: none;
+    padding: 12px 30px;
+    margin: 10px 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background: #00dd77;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 255, 136, 0.4);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+button#stop {
+    background: #ff4444;
+    color: #ffffff;
+}
+
+button#stop:hover {
+    background: #dd3333;
+    box-shadow: 0 6px 12px rgba(255, 68, 68, 0.4);
+}
+
+button#reset {
+    background: #4488ff;
+    color: #ffffff;
+}
+
+button#reset:hover {
+    background: #3377ee;
+    box-shadow: 0 6px 12px rgba(68, 136, 255, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    #main-container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    #timer {
+        font-size: 1.2rem;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        margin: 5px 3px;
+    }
+}
