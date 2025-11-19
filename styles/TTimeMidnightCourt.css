@@ -1,0 +1,133 @@
+/* Midnight Court */
+
+.quadrant[data-vibe="midnight-court"] {
+  --themeBase: #050910;
+  --themeDark: #020307;
+  --themeAccent: #ffb547;
+  --themeText: #fdf7ec;
+  --themeGlow: rgba(255, 181, 71, 0.9);
+  --themeBadge: rgba(5, 9, 16, 0.96);
+  --video-fr: 5;
+  --panel-fr: 3;
+
+  color: var(--themeText);
+  font-family: "Playfair Display", "Times New Roman", serif;
+  text-transform: none;
+}
+
+.quadrant[data-vibe="midnight-court"] .quad-video {
+  filter: contrast(1.18) saturate(1.15) brightness(0.98);
+  animation: midnightCourtZoom 22s ease-in-out infinite alternate;
+  transform-origin: center center;
+}
+
+.quadrant[data-vibe="midnight-court"] .vibe-overlay {
+  background: linear-gradient(180deg, rgba(5, 9, 16, 0) 0%, rgba(5, 9, 16, 0.45) 55%, rgba(5, 9, 16, 0.85) 100%);
+  mix-blend-mode: soft-light;
+}
+
+.quadrant[data-vibe="midnight-court"] .panel-container,
+.quadrant[data-vibe="midnight-court"] .preview-panel {
+  background:
+    linear-gradient(145deg, rgba(6, 10, 18, 0.98), rgba(6, 10, 18, 0.94)),
+    repeating-linear-gradient(135deg, rgba(255, 181, 71, 0.12) 0, rgba(255, 181, 71, 0.12) 1px, transparent 1px, transparent 4px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.9);
+}
+
+.quadrant[data-vibe="midnight-court"] .info-text-overlay,
+.quadrant[data-vibe="midnight-court"] .special-overlay-title {
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 14px rgba(0, 0, 0, 0.85),
+    0 0 20px rgba(255, 181, 71, 0.45);
+}
+
+.quadrant[data-vibe="midnight-court"] .special-overlay-timer,
+.quadrant[data-vibe="midnight-court"] .video-countdown-overlay .countdown-text {
+  font-size: clamp(3rem, 3.6vw, 4rem);
+}
+
+.quadrant[data-vibe="midnight-court"] .video-countdown-overlay {
+  background: radial-gradient(circle at center, rgba(5, 9, 16, 0.95), rgba(5, 9, 16, 0.98));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 0 1px rgba(255, 181, 71, 0.7),
+    0 0 40px rgba(255, 181, 71, 0.42);
+}
+
+.quadrant[data-vibe="midnight-court"] .bottom-bar button,
+.quadrant[data-vibe="midnight-court"] .chooseTint button,
+.quadrant[data-vibe="midnight-court"] .validation-button {
+  background: linear-gradient(180deg, rgba(19, 23, 31, 0.95), rgba(6, 10, 18, 0.95));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 0 1px rgba(255, 181, 71, 0.4),
+    0 12px 26px rgba(0, 0, 0, 0.85);
+  color: var(--themeText);
+}
+
+.quadrant[data-vibe="midnight-court"] .bottom-bar button:hover,
+.quadrant[data-vibe="midnight-court"] .chooseTint button:hover,
+.quadrant[data-vibe="midnight-court"] .validation-button:hover {
+  background: linear-gradient(180deg, rgba(30, 34, 45, 0.96), rgba(10, 14, 22, 0.98));
+  box-shadow:
+    0 0 0 1px rgba(255, 229, 180, 0.7),
+    0 0 35px rgba(255, 181, 71, 0.5);
+}
+
+.quadrant[data-vibe="midnight-court"] .choose-grid-item,
+.quadrant[data-vibe="midnight-court"] .action-choice-overlay .choices > * {
+  background: radial-gradient(circle at top, rgba(18, 24, 35, 0.98), rgba(5, 9, 16, 0.98));
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.8),
+    0 16px 32px rgba(0, 0, 0, 0.9);
+}
+
+.quadrant[data-vibe="midnight-court"] .event-overlay-light {
+  background: radial-gradient(circle at center, rgba(255, 240, 208, 0.45), transparent 70%);
+  mix-blend-mode: screen;
+}
+
+.quadrant[data-vibe="midnight-court"] .event-overlay-smoke {
+  background: radial-gradient(circle at center, rgba(70, 78, 93, 0.38), transparent 70%);
+  mix-blend-mode: soft-light;
+}
+
+.quadrant[data-vibe="midnight-court"] .event-overlay-inhale {
+  background: radial-gradient(circle at center, rgba(255, 181, 71, 0.4), transparent 75%);
+}
+
+.quadrant[data-vibe="midnight-court"] .event-overlay-hold {
+  background: radial-gradient(circle at center, rgba(5, 9, 16, 0.88), transparent 80%);
+}
+
+.quadrant[data-vibe="midnight-court"] .event-overlay-exhale {
+  background: radial-gradient(circle at center, rgba(255, 128, 55, 0.4), transparent 80%);
+}
+
+.quadrant[data-vibe="midnight-court"] .event-overlay-sniff {
+  background: repeating-radial-gradient(circle at center, rgba(255, 181, 71, 0.38), rgba(0, 0, 0, 0) 22px);
+  mix-blend-mode: screen;
+}
+
+.quadrant[data-vibe="midnight-court"] .event-overlay-mask {
+  background: linear-gradient(135deg, rgba(5, 9, 16, 0.96), rgba(18, 23, 34, 0.96));
+}
+
+.quadrant[data-vibe="midnight-court"] .event-overlay-action {
+  background: conic-gradient(from 0deg, rgba(255, 181, 71, 0.6), rgba(255, 128, 55, 0.4), rgba(255, 181, 71, 0.6));
+  mix-blend-mode: soft-light;
+}
+
+@keyframes midnightCourtZoom {
+  0% { transform: scale(1.03) translate3d(0, -1%, 0); }
+  100% { transform: scale(1.08) translate3d(0, 1%, 0); }
+}
