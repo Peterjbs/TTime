@@ -1,0 +1,105 @@
+/* Glass Studio */
+
+.quadrant[data-vibe="glass-studio"] {
+  --themeBase: #0b1018;
+  --themeDark: #05070b;
+  --themeAccent: #46c5ff;
+  --themeText: #f6fbff;
+  --themeGlow: rgba(70, 197, 255, 0.75);
+  --themeBadge: rgba(11, 16, 24, 0.92);
+  --video-fr: 5;
+  --panel-fr: 3;
+
+  color: var(--themeText);
+  font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: none;
+}
+
+.quadrant[data-vibe="glass-studio"] .quad-video {
+  filter: contrast(1.18) saturate(1.1) brightness(1.1);
+  animation: glassStudioParallax 26s ease-in-out infinite alternate;
+}
+
+.quadrant[data-vibe="glass-studio"] .vibe-overlay {
+  background:
+    linear-gradient(135deg, rgba(15, 21, 32, 0.1), rgba(15, 21, 32, 0.7)),
+    radial-gradient(circle at 10% 0%, rgba(70, 197, 255, 0.18), transparent 60%);
+  mix-blend-mode: screen;
+}
+
+.quadrant[data-vibe="glass-studio"] .panel-container,
+.quadrant[data-vibe="glass-studio"] .preview-panel {
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02)),
+    radial-gradient(circle at top left, rgba(70, 197, 255, 0.22), transparent 55%);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.quadrant[data-vibe="glass-studio"] .info-text-overlay,
+.quadrant[data-vibe="glass-studio"] .special-overlay-title {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.quadrant[data-vibe="glass-studio"] .video-countdown-overlay {
+  background: radial-gradient(circle at center, rgba(11, 16, 24, 0.96), rgba(11, 16, 24, 0.98));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow:
+    0 0 0 1px rgba(70, 197, 255, 0.5),
+    0 0 40px rgba(70, 197, 255, 0.4);
+}
+
+.quadrant[data-vibe="glass-studio"] .bottom-bar button,
+.quadrant[data-vibe="glass-studio"] .chooseTint button,
+.quadrant[data-vibe="glass-studio"] .validation-button {
+  background: linear-gradient(135deg, rgba(26, 34, 46, 0.98), rgba(15, 21, 32, 0.98));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow:
+    0 0 0 1px rgba(70, 197, 255, 0.4),
+    0 18px 40px rgba(0, 0, 0, 0.9);
+}
+
+.quadrant[data-vibe="glass-studio"] .event-overlay-light {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4), transparent 80%);
+  mix-blend-mode: screen;
+}
+
+.quadrant[data-vibe="glass-studio"] .event-overlay-smoke {
+  background: radial-gradient(circle at center, rgba(89, 123, 160, 0.3), transparent 70%);
+}
+
+.quadrant[data-vibe="glass-studio"] .event-overlay-inhale {
+  background: radial-gradient(circle at center, rgba(70, 197, 255, 0.4), transparent 75%);
+}
+
+.quadrant[data-vibe="glass-studio"] .event-overlay-hold {
+  background: radial-gradient(circle at center, rgba(11, 16, 24, 0.88), transparent 80%);
+}
+
+.quadrant[data-vibe="glass-studio"] .event-overlay-exhale {
+  background: radial-gradient(circle at center, rgba(145, 234, 228, 0.48), transparent 80%);
+}
+
+.quadrant[data-vibe="glass-studio"] .event-overlay-sniff {
+  background: repeating-radial-gradient(circle at center, rgba(70, 197, 255, 0.4), rgba(0, 0, 0, 0) 26px);
+}
+
+.quadrant[data-vibe="glass-studio"] .event-overlay-mask {
+  background: linear-gradient(135deg, rgba(11, 16, 24, 0.98), rgba(15, 21, 32, 0.98));
+}
+
+.quadrant[data-vibe="glass-studio"] .event-overlay-action {
+  background: conic-gradient(from 0deg, rgba(70, 197, 255, 0.6), rgba(145, 234, 228, 0.7), rgba(70, 197, 255, 0.6));
+  mix-blend-mode: screen;
+}
+
+@keyframes glassStudioParallax {
+  0% { transform: scale(1.02) translate3d(-1%, -0.5%, 0); }
+  100% { transform: scale(1.06) translate3d(1%, 0.5%, 0); }
+}
