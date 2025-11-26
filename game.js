@@ -1019,28 +1019,6 @@
     });
   }
 
-  function waitForOverlayChoice(overlay, duration, signal) {
-    return new Promise((resolve) => {
-      const timer = setTimeout(() => resolve("timeout"), duration);
-      const handler = (e) => {
-        clearTimeout(timer);
-        overlay.removeEventListener("choice", handler);
-        resolve(e.detail);
-      };
-      overlay.addEventListener("choice", handler);
-      if (signal) {
-        signal.addEventListener(
-          "abort",
-          () => {
-            clearTimeout(timer);
-            overlay.removeEventListener("choice", handler);
-            resolve("abort");
-          },
-          { once: true }
-        );
-      }
-    });
-  }
 
   function pickUnique(list, count) {
     const arr = [...list];
