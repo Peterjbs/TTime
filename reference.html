@@ -1249,7 +1249,6 @@
         const url = URL.createObjectURL(clip.file);
         clip.cachedUrl = url;
         createdObjectURLs.add(url);
-        createdObjectURLs.push(url);
         console.log('[Clip] Created blob URL for file:', clip.file.name, '→', url.substring(0, 50) + '...');
         return url;
       }
@@ -1349,7 +1348,7 @@
     }
 
     function releaseClipUrls() {
-      console.log('[Cleanup] Releasing', videos.length, 'clip URLs and', createdObjectURLs.length, 'blob URLs');
+      console.log('[Cleanup] Releasing', videos.length, 'clip URLs and', createdObjectURLs.size, 'blob URLs');
       videos.forEach(clip => {
         if (clip && clip.cachedUrl && clip.cachedUrl.startsWith('blob:')) {
           try { URL.revokeObjectURL(clip.cachedUrl); } catch (e) {}
@@ -1360,7 +1359,6 @@
         try { URL.revokeObjectURL(url); } catch (e) {}
       });
       createdObjectURLs.clear();
-      createdObjectURLs = [];
       console.log('[Cleanup] ✓ Clip URLs released');
     }
 
