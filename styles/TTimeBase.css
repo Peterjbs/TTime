@@ -1,0 +1,290 @@
+/* TTimeBase.css – shared baseline styles for quadrant timers and overlays */
+
+:root {
+  --themeBase: #050816;
+  --themeDark: #02030a;
+  --themeAccent: #ff3b9d;
+  --themeText: #f8f2ff;
+  --themeGlow: rgba(255, 59, 157, 0.8);
+  --themeBadge: rgba(5, 8, 22, 0.95);
+  --video-fr: 3;
+  --panel-fr: 2;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #050816;
+  color: #f8f2ff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  height: calc(100vh - 56px);
+}
+
+.quadrant {
+  position: relative;
+  display: grid;
+  grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
+  background: var(--themeBase);
+  color: var(--themeText);
+  overflow: hidden;
+}
+
+.quadrant#q2 {
+  grid-template-rows: minmax(0, 2fr) minmax(0, 3fr);
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.quad-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vibe-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.panel-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12px 12px 8px;
+  background: var(--themeBase);
+}
+
+.info-text-overlay {
+  position: relative;
+  min-height: 40px;
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 160ms ease-out, transform 160ms ease-out;
+}
+
+.info-text-overlay.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.video-countdown-overlay {
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+  padding: 6px 16px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.6);
+  color: var(--themeText);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  transition: opacity 140ms ease-out;
+}
+
+.video-countdown-overlay.show {
+  opacity: 1;
+}
+
+.video-countdown-overlay .countdown-text {
+  font-size: 1rem;
+}
+
+.video-countdown-overlay .timer-text,
+.special-overlay-timer,
+.nextEventTime {
+  font-weight: 700;
+}
+
+.special-overlay {
+  position: absolute;
+  inset: 8%;
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(6px);
+  transition: opacity 140ms ease-out, transform 140ms ease-out;
+}
+
+.special-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.special-overlay-title {
+  font-size: 1rem;
+}
+
+.special-overlay-timer {
+  font-size: 1.8rem;
+}
+
+.special-overlay-actions,
+.action-choice-choices,
+.grid-choice-choices,
+.breath-count-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.validation-button,
+.breath-count-item,
+.action-choice-item,
+.grid-choice-item {
+  cursor: pointer;
+}
+
+.nextEventTimer {
+  margin-top: 8px;
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 120ms ease-out;
+}
+
+.nextEventTimer.show {
+  opacity: 0.85;
+}
+
+.bottom-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 0.8rem;
+}
+
+.bottom-bar button {
+  border: none;
+  padding: 4px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.bottom-bar .spacer {
+  flex: 1;
+}
+
+.tally {
+  min-width: 80px;
+  text-align: center;
+}
+
+.event-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease-out;
+}
+
+.event-overlay.show {
+  opacity: 1;
+}
+
+.chooseTint {
+  position: absolute;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.choose-phase .chooseTint {
+  display: flex;
+}
+
+.choose-layout {
+  display: grid;
+  grid-template-rows: minmax(0, 3fr) minmax(0, 2fr);
+  gap: 12px;
+  width: 100%;
+  max-width: 900px;
+}
+
+/* four preview videos spanning the video panel area */
+.choose-video-area {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.choose-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.choose-grid-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.choose-grid-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.choose-grid-item .item-label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 4px 6px;
+  font-size: 0.7rem;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.8));
+}
+
+.vibe-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.preview-panel {
+  border-radius: 10px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.preview-panel-info,
+.preview-panel-video {
+  min-height: 40px;
+}
+
+.btn-phase-cancel {
+  display: none;
+}
+
+.bottom-bar.show-cancel-buttons .btn-phase-cancel {
+  display: inline-flex;
+}

@@ -1,0 +1,112 @@
+/* Aerobic Broadcast */
+
+.quadrant[data-vibe="aerobic-broadcast"] {
+  --themeBase: #05131f;
+  --themeDark: #02070d;
+  --themeAccent: #ff4c6a;
+  --themeText: #fefaff;
+  --themeGlow: rgba(255, 76, 106, 0.9);
+  --themeBadge: rgba(5, 19, 31, 0.96);
+  --video-fr: 5;
+  --panel-fr: 4;
+
+  color: var(--themeText);
+  font-family: "Bangers", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .quad-video {
+  filter: contrast(1.3) saturate(1.4) brightness(1.05);
+  animation:
+    aerobicBroadcastPulse 12s ease-in-out infinite alternate,
+    aerobicBroadcastHue 40s linear infinite;
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .vibe-overlay {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(255, 76, 106, 0.45), transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(86, 204, 242, 0.3), transparent 60%);
+  mix-blend-mode: screen;
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .panel-container,
+.quadrant[data-vibe="aerobic-broadcast"] .preview-panel {
+  background: linear-gradient(120deg, rgba(5, 19, 31, 0.96), rgba(5, 19, 31, 0.94)),
+    repeating-linear-gradient(-45deg, rgba(255, 76, 106, 0.22) 0, rgba(255, 76, 106, 0.22) 2px, transparent 2px, transparent 6px);
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 22px 55px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .info-text-overlay,
+.quadrant[data-vibe="aerobic-broadcast"] .special-overlay-title {
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.85),
+    0 0 18px rgba(255, 76, 106, 0.7);
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .video-countdown-overlay {
+  background: radial-gradient(circle at center, rgba(5, 19, 31, 0.96), rgba(5, 19, 31, 0.98));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(255, 76, 106, 0.6),
+    0 0 40px rgba(255, 76, 106, 0.6);
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .bottom-bar button,
+.quadrant[data-vibe="aerobic-broadcast"] .chooseTint button,
+.quadrant[data-vibe="aerobic-broadcast"] .validation-button {
+  background: linear-gradient(180deg, rgba(11, 28, 43, 0.98), rgba(5, 19, 31, 0.98));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(255, 76, 106, 0.5),
+    0 16px 38px rgba(0, 0, 0, 0.95);
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .event-overlay-light {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.45), transparent 80%);
+  mix-blend-mode: screen;
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .event-overlay-smoke {
+  background: radial-gradient(circle at center, rgba(86, 204, 242, 0.36), transparent 70%);
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .event-overlay-inhale {
+  background: radial-gradient(circle at center, rgba(255, 76, 106, 0.45), transparent 80%);
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .event-overlay-hold {
+  background: radial-gradient(circle at center, rgba(5, 19, 31, 0.9), transparent 80%);
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .event-overlay-exhale {
+  background: radial-gradient(circle at center, rgba(241, 196, 15, 0.45), transparent 80%);
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .event-overlay-sniff {
+  background: repeating-radial-gradient(circle at center, rgba(255, 76, 106, 0.45), rgba(0, 0, 0, 0) 20px);
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .event-overlay-mask {
+  background: linear-gradient(135deg, rgba(5, 19, 31, 0.98), rgba(25, 35, 52, 0.98));
+}
+
+.quadrant[data-vibe="aerobic-broadcast"] .event-overlay-action {
+  background: conic-gradient(from 0deg, rgba(255, 76, 106, 0.78), rgba(86, 204, 242, 0.8), rgba(255, 76, 106, 0.78));
+}
+
+@keyframes aerobicBroadcastPulse {
+  0% { transform: scale(1.02); }
+  100% { transform: scale(1.07); }
+}
+
+@keyframes aerobicBroadcastHue {
+  0% { filter: contrast(1.3) saturate(1.4) brightness(1.05) hue-rotate(0deg); }
+  100% { filter: contrast(1.3) saturate(1.4) brightness(1.05) hue-rotate(25deg); }
+}

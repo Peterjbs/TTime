@@ -1,0 +1,102 @@
+/* Ink Theatre */
+
+.quadrant[data-vibe="ink-theatre"] {
+  --themeBase: #050307;
+  --themeDark: #020104;
+  --themeAccent: #ff4f4f;
+  --themeText: #fff7f2;
+  --themeGlow: rgba(255, 79, 79, 0.8);
+  --themeBadge: rgba(5, 3, 7, 0.96);
+  --video-fr: 3;
+  --panel-fr: 2;
+
+  color: var(--themeText);
+  font-family: "Playfair Display", "Times New Roman", serif;
+  text-transform: uppercase;
+}
+
+.quadrant[data-vibe="ink-theatre"] .quad-video {
+  filter: contrast(1.4) saturate(1.2) brightness(0.96);
+  animation: inkTheatreVignette 26s ease-in-out infinite alternate;
+}
+
+.quadrant[data-vibe="ink-theatre"] .vibe-overlay {
+  background:
+    radial-gradient(circle at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 65%, rgba(0, 0, 0, 0.9) 100%);
+  mix-blend-mode: multiply;
+}
+
+.quadrant[data-vibe="ink-theatre"] .panel-container,
+.quadrant[data-vibe="ink-theatre"] .preview-panel {
+  background:
+    radial-gradient(circle at top center, rgba(255, 79, 79, 0.22), transparent 55%),
+    linear-gradient(180deg, #050307 0%, #050307 40%, #050307 100%),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 4px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.95);
+}
+
+.quadrant[data-vibe="ink-theatre"] .info-text-overlay,
+.quadrant[data-vibe="ink-theatre"] .special-overlay-title {
+  text-shadow:
+    0 0 10px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(255, 79, 79, 0.7);
+}
+
+.quadrant[data-vibe="ink-theatre"] .video-countdown-overlay {
+  background: radial-gradient(circle at center, rgba(5, 3, 7, 0.96), rgba(5, 3, 7, 0.98));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 0 0 1px rgba(255, 79, 79, 0.6),
+    0 0 40px rgba(255, 79, 79, 0.5);
+}
+
+.quadrant[data-vibe="ink-theatre"] .bottom-bar button,
+.quadrant[data-vibe="ink-theatre"] .chooseTint button,
+.quadrant[data-vibe="ink-theatre"] .validation-button {
+  background: linear-gradient(180deg, rgba(22, 12, 18, 0.98), rgba(5, 3, 7, 0.98));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 0 0 1px rgba(255, 79, 79, 0.4),
+    0 16px 38px rgba(0, 0, 0, 0.95);
+}
+
+.quadrant[data-vibe="ink-theatre"] .event-overlay-light {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.35), transparent 80%);
+}
+
+.quadrant[data-vibe="ink-theatre"] .event-overlay-smoke {
+  background: radial-gradient(circle at center, rgba(68, 63, 72, 0.5), transparent 70%);
+}
+
+.quadrant[data-vibe="ink-theatre"] .event-overlay-inhale {
+  background: radial-gradient(circle at center, rgba(255, 79, 79, 0.45), transparent 80%);
+}
+
+.quadrant[data-vibe="ink-theatre"] .event-overlay-hold {
+  background: radial-gradient(circle at center, rgba(5, 3, 7, 0.96), transparent 80%);
+}
+
+.quadrant[data-vibe="ink-theatre"] .event-overlay-exhale {
+  background: radial-gradient(circle at center, rgba(255, 180, 150, 0.55), transparent 80%);
+}
+
+.quadrant[data-vibe="ink-theatre"] .event-overlay-sniff {
+  background: repeating-radial-gradient(circle at center, rgba(255, 79, 79, 0.4), rgba(0, 0, 0, 0) 22px);
+}
+
+.quadrant[data-vibe="ink-theatre"] .event-overlay-mask {
+  background: linear-gradient(135deg, rgba(5, 3, 7, 0.98), rgba(22, 12, 18, 0.98));
+}
+
+.quadrant[data-vibe="ink-theatre"] .event-overlay-action {
+  background: conic-gradient(from 0deg, rgba(255, 79, 79, 0.75), rgba(56, 24, 32, 0.95), rgba(255, 79, 79, 0.75));
+}
+
+@keyframes inkTheatreVignette {
+  0% { transform: scale(1.02); }
+  100% { transform: scale(1.06); }
+}

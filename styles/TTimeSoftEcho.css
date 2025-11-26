@@ -1,0 +1,102 @@
+/* Soft Echo */
+
+.quadrant[data-vibe="soft-echo"] {
+  --themeBase: #070a10;
+  --themeDark: #04060b;
+  --themeAccent: #c1a4ff;
+  --themeText: #fdf9ff;
+  --themeGlow: rgba(193, 164, 255, 0.75);
+  --themeBadge: rgba(7, 10, 16, 0.96);
+  --video-fr: 4;
+  --panel-fr: 3;
+
+  color: var(--themeText);
+  font-family: "Quicksand", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-transform: none;
+}
+
+.quadrant[data-vibe="soft-echo"] .quad-video {
+  filter: contrast(1.05) saturate(1.08) brightness(1.12);
+  animation: softEchoDrift 30s ease-in-out infinite alternate;
+}
+
+.quadrant[data-vibe="soft-echo"] .vibe-overlay {
+  background:
+    linear-gradient(180deg, rgba(7, 10, 16, 0.1) 0%, rgba(7, 10, 16, 0.75) 70%),
+    radial-gradient(circle at 10% 0%, rgba(193, 164, 255, 0.3), transparent 55%);
+  mix-blend-mode: screen;
+}
+
+.quadrant[data-vibe="soft-echo"] .panel-container,
+.quadrant[data-vibe="soft-echo"] .preview-panel {
+  background:
+    linear-gradient(135deg, rgba(193, 164, 255, 0.32), rgba(145, 234, 228, 0.18)),
+    radial-gradient(circle at 0% 100%, rgba(255, 214, 165, 0.35), transparent 55%);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(0, 0, 0, 0.7);
+}
+
+.quadrant[data-vibe="soft-echo"] .info-text-overlay,
+.quadrant[data-vibe="soft-echo"] .special-overlay-title {
+  text-shadow:
+    0 0 8px rgba(0, 0, 0, 0.8),
+    0 0 16px rgba(193, 164, 255, 0.7);
+}
+
+.quadrant[data-vibe="soft-echo"] .video-countdown-overlay {
+  background: radial-gradient(circle at center, rgba(7, 10, 16, 0.96), rgba(7, 10, 16, 0.98));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 0 0 1px rgba(193, 164, 255, 0.55),
+    0 0 32px rgba(193, 164, 255, 0.5);
+}
+
+.quadrant[data-vibe="soft-echo"] .bottom-bar button,
+.quadrant[data-vibe="soft-echo"] .chooseTint button,
+.quadrant[data-vibe="soft-echo"] .validation-button {
+  background: linear-gradient(180deg, rgba(17, 20, 34, 0.98), rgba(7, 10, 16, 0.98));
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 0 0 1px rgba(193, 164, 255, 0.4),
+    0 16px 38px rgba(0, 0, 0, 0.95);
+}
+
+.quadrant[data-vibe="soft-echo"] .event-overlay-light {
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.32), transparent 80%);
+}
+
+.quadrant[data-vibe="soft-echo"] .event-overlay-smoke {
+  background: radial-gradient(circle at center, rgba(162, 155, 190, 0.4), transparent 75%);
+}
+
+.quadrant[data-vibe="soft-echo"] .event-overlay-inhale {
+  background: radial-gradient(circle at center, rgba(193, 164, 255, 0.4), transparent 80%);
+}
+
+.quadrant[data-vibe="soft-echo"] .event-overlay-hold {
+  background: radial-gradient(circle at center, rgba(7, 10, 16, 0.95), transparent 80%);
+}
+
+.quadrant[data-vibe="soft-echo"] .event-overlay-exhale {
+  background: radial-gradient(circle at center, rgba(145, 234, 228, 0.5), transparent 80%);
+}
+
+.quadrant[data-vibe="soft-echo"] .event-overlay-sniff {
+  background: repeating-radial-gradient(circle at center, rgba(193, 164, 255, 0.4), rgba(0, 0, 0, 0) 24px);
+}
+
+.quadrant[data-vibe="soft-echo"] .event-overlay-mask {
+  background: linear-gradient(135deg, rgba(7, 10, 16, 0.98), rgba(17, 20, 34, 0.98));
+}
+
+.quadrant[data-vibe="soft-echo"] .event-overlay-action {
+  background: conic-gradient(from 0deg, rgba(193, 164, 255, 0.8), rgba(145, 234, 228, 0.75), rgba(193, 164, 255, 0.8));
+}
+
+@keyframes softEchoDrift {
+  0% { transform: scale(1.03) translate3d(-1%, -0.5%, 0); }
+  100% { transform: scale(1.05) translate3d(1%, 0.5%, 0); }
+}
